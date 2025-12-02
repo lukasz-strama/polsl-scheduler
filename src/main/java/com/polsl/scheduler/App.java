@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import com.polsl.scheduler.db.DatabaseConnector;
+
 
 /**
  * JavaFX App
@@ -14,6 +16,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
+        DatabaseConnector.connect();
+        
         var javaVersion = SystemInfo.javaVersion();
         var javafxVersion = SystemInfo.javafxVersion();
 
