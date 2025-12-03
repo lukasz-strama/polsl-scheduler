@@ -56,27 +56,27 @@ public class DatabaseConnector {
     }
 
     private static void executeSqlScript(Connection conn, String fileName) {
-        try {
-            InputStream is = DatabaseConnector.class.getResourceAsStream("/" + fileName);
-            if (is == null) {
-                logger.error("File {} not found in resources!", fileName);
-                return;
-            }
+        InputStream is = DatabaseConnector.class.getResourceAsStream("/" + fileName);
+        if (is == null) {
+            logger.error("File {} not found in resources!", fileName);
+            return;
+        }
 
-            Scanner scanner = new Scanner(is);
+        try (Scanner scanner = new Scanner(is);
+             Statement statement = conn.createStatement()) {
+
             scanner.useDelimiter(";");
-            Statement statement = conn.createStatement();
 
             int commands = 0;
             while (scanner.hasNext()) {
                 String sql = scanner.next().trim();
                 if (sql.isEmpty()) continue;
+                
                 statement.execute(sql);
                 commands++;
             }
             logger.info("Executed {} commands from {}", commands, fileName);
-            scanner.close();
-            
+
         } catch (Exception e) {
             logger.error("Error executing script: " + fileName, e);
         }
