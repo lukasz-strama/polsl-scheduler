@@ -5,4 +5,5 @@ module com.polsl.scheduler {
     requires org.slf4j;
     requires org.slf4j.simple;
     exports com.polsl.scheduler;
+    exports com.polsl.scheduler.db;
 }
