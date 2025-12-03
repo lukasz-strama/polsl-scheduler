@@ -35,6 +35,19 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <sourceFileExcludes>
+                        <exclude>module-info.java</exclude>
+                    </sourceFileExcludes>
+                    <source>17</source>
+                    <detectJavaApiLink>false</detectJavaApiLink>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
