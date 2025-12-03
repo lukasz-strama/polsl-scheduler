@@ -47,13 +47,12 @@ public class DatabaseConnector {
         String checkSql = "SELECT COUNT(*) FROM subjects";
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(checkSql)) {
+            
             if (rs.next()) {
                 return rs.getInt(1) == 0;
             }
-        } catch (SQLException e) {
-            return true;
         }
-        return true;
+        return false; 
     }
 
     private static void executeSqlScript(Connection conn, String fileName) {
