@@ -4,6 +4,5 @@ module com.polsl.scheduler {
     requires org.xerial.sqlitejdbc;
     requires org.slf4j;
     requires org.slf4j.simple;
-    
     exports com.polsl.scheduler;
 }
