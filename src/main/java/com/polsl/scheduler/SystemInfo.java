@@ -1,5 +1,8 @@
 package com.polsl.scheduler;
 
+/**
+ * Utility class for retrieving system and JavaFX runtime information.
+ */
 public class SystemInfo {
 
     public static String javaVersion() {
